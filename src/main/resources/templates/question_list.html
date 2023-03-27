@@ -6,6 +6,90 @@
 <div layout:fragment="content" class="container my-3">
 
     <table class="table">
+        <thead class="table-dark">
+        <tr>
+            <th>속성</th>
+            <th>설명</th>
+            <th>값</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th>paging.isEmpty()</th>
+            <td>
+                페이지 존재 여부 (게시물이 있으면 false, 없으면 true)
+            </td>
+            <td>
+                [[${paging.isEmpty()}]]
+            </td>
+        </tr>
+
+        <tr>
+            <th>paging.totalElements</th>
+            <td>
+                전체 게시물 개수
+            </td>
+            <td>
+                [[${paging.totalElements}]]
+            </td>
+        </tr>
+
+        <tr>
+            <th>paging.totalPages</th>
+            <td>
+                전체 페이지 개수
+            </td>
+            <td>
+                [[${paging.totalPages}]]
+            </td>
+        </tr>
+
+        <tr>
+            <th>paging.size</th>
+            <td>
+                페이지당 보여줄 게시물 개수
+            </td>
+            <td>
+                [[${paging.size}]]
+            </td>
+        </tr>
+
+        <tr>
+            <th>paging.number</th>
+            <td>
+                현재 페이지 번호
+            </td>
+            <td>
+                [[${paging.number}]]
+            </td>
+        </tr>
+
+        <tr>
+            <th>paging.hasPrevious</th>
+            <td>
+                이전 페이지 존재 여부
+            </td>
+            <td>
+                [[${paging.hasPrevious}]]
+            </td>
+        </tr>
+
+        <tr>
+            <th>paging.hasNext</th>
+            <td>
+                다음 페이지 존재 여부
+            </td>
+            <td>
+                [[${paging.hasNext}]]
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+
+    <hr>
+
+    <table class="table">
 
         <thead class="table-dark">
         <tr>
@@ -15,7 +99,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="q, loop : ${questionList}">
+        <tr th:each="q, loop : ${paging}">
             <td>
                 <a th:text="${loop.count}" th:href="@{|/question/detail/${q.id}|}"></a>
             </td>
