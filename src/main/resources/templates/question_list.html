@@ -114,13 +114,13 @@
     <nav th:if="${!paging.isEmpty()}">
         <ul class="pagination justify-content-center">
             <li class="page-item" th:classappend="${!paging.hasPrevious} ? 'disabled'">
-                <a class="page-link" href="#">이전</a>
+                <a class="page-link"  th:href="@{|?page=${paging.number - 1}|}">이전</a>
             </li>
             <li class="page-item" th:each="page: ${#numbers.sequence(0, paging.totalPages-1)}">
-                <a class="page-link" href="#" th:text="${page}"></a>
+                <a class="page-link" th:href="@{|?page=${page}|}" th:text="${page}"></a>
             </li>
             <li class="page-item" th:classappend="${!paging.hasNext} ? 'disabled'">
-                <a class="page-link" href="#">다음</a>
+                <a class="page-link" th:href="@{|?page=${paging.number + 1}|}">다음</a>
             </li>
         </ul>
     </nav>
