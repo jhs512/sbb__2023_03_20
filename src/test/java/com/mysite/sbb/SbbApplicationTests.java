@@ -197,6 +197,8 @@ class SbbApplicationTests {
         assertEquals(1, questionRepository.count());
     }
 
+    @Transactional // 여기서의 트랜잭션의 역할 : 함수가 끝날 때까지 전화(DB와의)를 끊지 않음
+    @Rollback(false)
     @Test
     @DisplayName("답변 데이터 생성 후 저장하기")
     void t009() {
