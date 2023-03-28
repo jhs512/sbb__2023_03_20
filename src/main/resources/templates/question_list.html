@@ -103,10 +103,14 @@
         <tbody>
         <tr th:each="q, loop : ${paging}">
             <td>
-                <a th:text="${paging.totalElements - (paging.number * paging.size) - loop.index}" th:href="@{|/question/detail/${q.id}|}"></a>
+                <a th:text="${paging.totalElements - (paging.number * paging.size) - loop.index}"
+                   th:href="@{|/question/detail/${q.id}|}"></a>
             </td>
             <td>
                 <a th:text="${q.subject}" th:href="@{|/question/detail/${q.id}|}"></a>
+                <span class="text-danger small ms-2"
+                      th:if="${#lists.size(q.answerList) > 0}"
+                      th:text="${#lists.size(q.answerList)}"></span>
             </td>
             <td th:text="${#temporals.format(q.createDate, 'yy-MM-dd HH:mm')}"></td>
         </tr>
