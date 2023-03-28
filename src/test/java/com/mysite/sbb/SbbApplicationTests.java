@@ -5,6 +5,8 @@ import com.mysite.sbb.answer.AnswerRepository;
 import com.mysite.sbb.question.Question;
 import com.mysite.sbb.question.QuestionRepository;
 import com.mysite.sbb.question.QuestionService;
+import com.mysite.sbb.user.UserRepository;
+import com.mysite.sbb.user.UserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -26,9 +28,14 @@ class SbbApplicationTests {
     @Autowired
     private QuestionService questionService;
     @Autowired
+    private UserService userService;
+
+    @Autowired
     private QuestionRepository questionRepository;
     @Autowired
     private AnswerRepository answerRepository;
+    @Autowired
+    private UserRepository userRepository;
 
     @BeforeEach
         // 아래 메서드는 각 테스트케이스가 실행되기 전에 실행된다.
@@ -42,6 +49,13 @@ class SbbApplicationTests {
 
         // 흔적삭제(다음번 INSERT 때 id가 1번으로 설정되도록)
         questionRepository.clearAutoIncrement();
+
+        // 모든 데이터 삭제
+        userRepository.clearAutoIncrement();
+
+        // 회원 2명 생성
+        userService.create("user1", "user1@test.com", "1234");
+        userService.create("user2", "user2@test.com", "1234");
 
         // 질문 1개 생성
         Question q1 = new Question();
