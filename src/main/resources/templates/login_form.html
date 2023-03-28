@@ -13,10 +13,12 @@
         </div>
         <div class="mb-3">
             <label for="username" class="form-label">사용자ID</label>
+            <!-- [name="username"] : 시큐리티가 기본적으로 구현해준 로그인 폼 처리에서 아이디 폼필드 이름을 username 으로 인식하고 있다. -->
             <input type="text" name="username" id="username" class="form-control">
         </div>
         <div class="mb-3">
             <label for="password" class="form-label">비밀번호</label>
+            <!-- [name="password"] : 시큐리티가 기본적으로 구현해준 로그인 폼 처리에서 비밀번호 폼필드 이름을 password 으로 인식하고 있다. -->
             <input type="password" name="password" id="password" class="form-control">
         </div>
         <button type="submit" class="btn btn-primary">로그인</button>

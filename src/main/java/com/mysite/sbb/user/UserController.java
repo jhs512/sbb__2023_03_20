@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class UserController {
     private final UserService userService;
 
+    // 로그인 페이지를 우리가 직접 만들기 위해서
     @GetMapping("/login")
     public String login() {
         return "login_form";
