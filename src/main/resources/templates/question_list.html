@@ -54,26 +54,26 @@
         </tbody>
     </table>
 
-    <nav th:if="${!paging.isEmpty()}">
+    <nav th:if="${!paging.isEmpty()}" th:with="queryStrBase = '?kw=' + ${param.kw != null ? param.kw : ''}">
         <ul class="pagination justify-content-center">
             <li class="page-item" th:classappend="${paging.number == 0} ? 'disabled'">
-                <a class="page-link" th:href="@{|?page=0|}">
+                <a class="page-link" th:href="@{|${queryStrBase}&page=0|}">
                     <span>&laquo;</span>
                 </a>
             </li>
             <li class="page-item" th:classappend="${!paging.hasPrevious} ? 'disabled'">
-                <a class="page-link" th:href="@{|?page=${paging.number - 1}|}">이전</a>
+                <a class="page-link" th:href="@{|${queryStrBase}&page=${paging.number - 1}|}">이전</a>
             </li>
             <li class="page-item" th:classappend="${paging.number == page} ? 'active'"
                 th:each="page: ${#numbers.sequence(0, paging.totalPages - 1)}"
                 th:if="${page >= paging.number - 5 and page <= paging.number + 5}">
-                <a class="page-link" th:href="@{|?page=${page}|}" th:text="${page}"></a>
+                <a class="page-link" th:href="@{|${queryStrBase}&page=${page}|}" th:text="${page}"></a>
             </li>
             <li class="page-item" th:classappend="${!paging.hasNext} ? 'disabled'">
-                <a class="page-link" th:href="@{|?page=${paging.number + 1}|}">다음</a>
+                <a class="page-link" th:href="@{|${queryStrBase}&page=${paging.number + 1}|}">다음</a>
             </li>
             <li class="page-item" th:classappend="${paging.number == paging.totalPages - 1} ? 'disabled'">
-                <a class="page-link" th:href="@{|?page=${paging.totalPages - 1}|}">
+                <a class="page-link" th:href="@{|${queryStrBase}&page=${paging.totalPages - 1}|}">
                     <span>&raquo;</span>
                 </a>
             </li>
