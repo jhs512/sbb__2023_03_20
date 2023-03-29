@@ -11,7 +11,9 @@ import org.hibernate.annotations.LazyCollectionOption;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 // question 테이블이 생김
 @Getter
@@ -46,8 +48,15 @@ public class Question {
     @ManyToOne
     private SiteUser author;
 
+    @ManyToMany
+    private Set<SiteUser> voters = new LinkedHashSet<>();
+
     public void addAnswer(Answer a) {
         a.setQuestion(this);
         answerList.add(a);
+    }
+
+    public void addVoter(SiteUser voter) {
+        voters.add(voter);
     }
 }

@@ -8,6 +8,8 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.time.LocalDateTime;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 // answer 테이블이 생김
 @Getter
@@ -31,4 +33,11 @@ public class Answer {
 
     @ManyToOne
     private SiteUser author;
+
+    @ManyToMany
+    private Set<SiteUser> voters = new LinkedHashSet<>();
+
+    public void addVoter(SiteUser voter) {
+        voters.add(voter);
+    }
 }
