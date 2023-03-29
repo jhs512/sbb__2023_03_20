@@ -27,6 +27,11 @@ public class QuestionService {
         sorts.add(Sort.Order.desc("createDate"));
 
         Pageable pageable = PageRequest.of(page, 10, Sort.by(sorts));
+
+        if ( kw == null || kw.trim().length() == 0 ) {
+            return questionRepository.findAll(pageable);
+        }
+
         Specification<Question> spec = search(kw);
         return questionRepository.findAll(spec, pageable);
     }
